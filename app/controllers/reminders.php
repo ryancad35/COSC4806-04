@@ -6,4 +6,6 @@ class Reminders extends Controller {
         $this->view('reminders/index');
     }
 
+    
+
 }
