@@ -16,5 +16,7 @@ class Reminder {
 
     public function update_reminder ($reminder_id) {
       $db = db_connect();
-      // do update statement
+      // do update statement 
     }
+
+}
