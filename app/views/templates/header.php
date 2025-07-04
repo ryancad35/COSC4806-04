@@ -31,6 +31,13 @@ if (!isset($_SESSION['auth'])) {
         <li class="nav-item">
           <a class="nav-link" href="/reminders/create">Create Reminder</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle" href="#">Account</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/reminders">My Reminders</a></li>
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </nav>
