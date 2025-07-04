@@ -2,6 +2,14 @@
 
 class Reminders extends Controller {
 
+    public function __construct() {
+        // If user is not logged in, redirect to login page
+        if (!isset($_SESSION['auth']) || $_SESSION['auth'] !== true) {
+            header('Location: /login');
+            exit;
+        }
+    }
+    // Display all reminders
     public function index() {
         $reminder = $this->model('Reminder');
         $list_of_reminders = $reminder->get_all_reminders();
@@ -16,7 +24,7 @@ class Reminders extends Controller {
     }
 
     // Capture when user submits a new reminder
-    public function create_reminder() {
+    public function create_reminder($message) {
         $action = filter_input(INPUT_POST, 'action');
 
         if ($action === 'Submit Reminder') {

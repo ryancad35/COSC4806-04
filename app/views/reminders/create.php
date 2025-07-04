@@ -6,7 +6,7 @@
                 <!-- Display error if there is one -->
                 <?php echo $error; ?>
                 <h1>Create a Reminder</h1>
-                <form action="/create_reminder" method="post">
+                <form action="/reminders/create_reminder" method="post">
                     <fieldset>
                         <legend>Enter Your Reminder</legend>
                     <textarea maxlength="255" name="message" id="message">
