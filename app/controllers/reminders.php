@@ -45,7 +45,15 @@ class Reminders extends Controller {
 
     public function edit($id) {
         $reminder = $this->model('Reminder');
-        $this->view('reminders/edit', ['id' => $id]);
+
+        // Get the reminder by ID
+        $reminderData = $reminder->get_reminder_by_id($id);
+
+        // Pass ID and reminder data to the view
+        $this->view('reminders/edit', [
+                    'id' => $id,
+                    'reminder' => $reminderData
+                    ]);     
     }
 
     // Delete a reminder
