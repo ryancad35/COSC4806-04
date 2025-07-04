@@ -43,6 +43,31 @@ class Reminders extends Controller {
         }
     }
 
+    public function edit_reminder() {
+        $action = filter_input(INPUT_POST, 'action');
+
+        if ($action === 'Edit Reminder') {
+            $message = trim(filter_input(INPUT_POST, 'message'));
+            $id = filter_input(INPUT_POST, 'id'); 
+
+            if (!empty($message)) {
+                $reminder = $this->model('Reminder');
+                $reminder->edit_reminder($message, $id);
+                header('Location: /reminders');
+                exit;
+            } else {
+                $error = 'Reminder message cannot be empty.';
+                $reminder = $this->model('Reminder');
+                $reminderData = $reminder->get_reminder_by_id($id);
+                $this->view('reminders/edit', [
+                    'error' => $error, 
+                    'id' => $id, 
+                    'reminder' => $reminderData
+                ]);
+            }
+        }
+    }
+
     public function edit($id) {
         $reminder = $this->model('Reminder');
 
