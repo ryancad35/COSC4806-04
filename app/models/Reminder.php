@@ -3,7 +3,15 @@
 class Reminder {
 
     public function __construct() {
+      }
 
+    public function add_reminder() {
+      $db = db_connect();
+      $message = filter_input(INPUT_POST, 'message');
+      $query = 'INSERT INTO reminders (subject) VALUES (:subject)';
+      $statement = $db->prepare($query);
+      $statement->bindValue(':subject', $message);
+      $statement->execute();
     }
 
     public function get_all_reminders() {

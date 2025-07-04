@@ -9,11 +9,33 @@ class Reminders extends Controller {
         $this->view('reminders/index', ['reminders' => $list_of_reminders, 'remindersList' => $remindersList]);
     }
 
+    // Redirect to page to create a new reminder
     public function create() {
         $reminder = $this->model('Reminder');
         $this->view('reminders/create');
     }
 
+    // Capture when user submits a new reminder
+    public function create_reminder() {
+        $action = filter_input(INPUT_POST, 'action');
+
+        if ($action === 'Submit Reminder') {
+            $message = trim(filter_input(INPUT_POST, 'message'));
+
+            if (!empty($message)) {
+                $reminder = $this->model('Reminder');
+                $reminder->add_reminder($message);
+                header('Location: /reminders');
+                exit;
+            } else {
+                $error = 'Reminder message cannot be empty.';
+                $this->view('reminders/create', ['error' => $error]);
+                return $error;
+            }
+        }
+    }
+
+    // Delete a reminder
     public function delete($id) {
         $reminder = $this->model('Reminder');
         $reminder->delete_reminder($id);

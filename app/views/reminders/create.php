@@ -6,13 +6,13 @@
                 <!-- Display error if there is one -->
                 <?php echo $error; ?>
                 <h1>Create a Reminder</h1>
-                <form action="/create" method="post">
+                <form action="/create_reminder" method="post">
                     <fieldset>
                         <legend>Enter Your Reminder</legend>
                     <textarea maxlength="255" name="message" id="message">
                     </textarea><br>
     
-                    <input type="submit" name = "action" value="Submit Reminder" >
+                    <input type="submit" name = "action" value="Submit Reminder">
                     </fieldset>
                 </form>
             <br>
@@ -20,4 +20,4 @@
         </div>
     </div>
 
-<?php require_once 'app/views/templates/footer.php' ?>
+<?php require_once 'app/views/templates/footer.php'?>
