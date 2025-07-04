@@ -169,6 +169,42 @@ footer {
     border: 1px solid #f5c6cb;
 }
 
+/* Textarea specific styling */
+textarea.form-control {
+    min-height: 80px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Reminders list styling */
+.reminders-list {
+    margin-top: 20px;
+}
+
+.reminders-list p {
+    margin-bottom: 0.5rem;
+}
+
+.reminders-list hr {
+    margin: 1rem 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+/* Fieldset styling */
+fieldset {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+legend {
+    padding: 0 0.5rem;
+    font-weight: bold;
+    color: #495057;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .container {

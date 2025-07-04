@@ -13,28 +13,23 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-sm-auto">
-			<form action="/login/verify" method="post">
-				<?php if (!empty($locked)): ?>
-					<fieldset disabled>
-				<?php else: ?>
-					<fieldset>
-				<?php endif; ?>
-					<div class="form-group">
-						<label for="username">Username</label>
-						<input required type="text" class="form-control" id="username" name="username">
-					</div>
-					<div class="form-group">
-						<label for="password">Password</label>
-						<input required type="password" class="form-control" id="password" name="password">
-					</div>
-					<br>
-					<button type="submit" class="btn btn-primary">Login</button>
-				</fieldset>
-			</form>
-			<p>Don't have an account? <a href="/create">Create one here</a></p>
-		</div>
-	</div>
+	<form action="/login/verify" method="post">
+		<?php if (!empty($locked)): ?>
+			<fieldset disabled>
+		<?php else: ?>
+			<fieldset>
+		<?php endif; ?>
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input required type="text" class="form-control" id="username" name="username">
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input required type="password" class="form-control" id="password" name="password">
+			</div>
+			<button type="submit" class="btn">Login</button>
+		</fieldset>
+	</form>
+	<p>Don't have an account? <a href="/create">Create one here</a></p>
 </main>
 <?php require_once 'app/views/templates/footer.php' ?>
