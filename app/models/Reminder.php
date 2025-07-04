@@ -5,13 +5,25 @@ class Reminder {
     public function __construct() {
       }
 
-  public function add_reminder($subject) {
-      $db = db_connect();
-      $query = 'INSERT INTO reminders (subject) VALUES (:subject)';
-      $statement = $db->prepare($query);
-      $statement->bindValue(':subject', $subject);
-      $statement->execute();
-  }
+    public function add_reminder($subject) {
+        $db = db_connect();
+        $query = 'INSERT INTO reminders (subject) VALUES (:subject)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':subject', $subject);
+        $statement->execute();
+    }
+
+    // Needed for editing specific reminders by id
+    public function get_reminder_by_id($id) {
+        $db = db_connect();
+        $query = 'SELECT * FROM reminders WHERE id = :id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+        $reminder = $statement->fetch(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+        return $reminder;
+    }
 
     public function get_all_reminders() {
       $db = db_connect();
