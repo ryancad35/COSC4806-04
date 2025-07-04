@@ -21,7 +21,17 @@ class Reminder {
       $statement->bindValue(':subject', $subject);
       $statement->bindValue(':id', id);
       $statement->execute();
+      $statement->closeCursor();  
     }
+
+  public function delete_reminder($id) {
+    $db = db_connect();
+    $query = 'DELETE from reminders WHERE id= :id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':id', id);
+    $statement->execute();
+    $statement->closeCursor();  
+  }
 
     function create_reminders_list($reminders)
     {
