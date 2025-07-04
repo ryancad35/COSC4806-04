@@ -1,6 +1,7 @@
 <?php require_once 'app/views/templates/header.php' ?>
 <div class="container">
     <div class="page-header">
+        <!-- Display error if there is one -->
         <?php if ($error): ?>
             <div class="alert alert-danger"><?php echo $error; ?></div>
         <?php endif; ?>
@@ -8,13 +9,12 @@
         <form action="/reminders/edit_reminder" method="post">
             <fieldset>
                 <legend>Enter Your Reminder</legend>
-                <div class="form-group">
-                    <textarea maxlength="255" name="message" id="message" class="form-control"><?php echo $reminder['subject']; ?></textarea>
-                </div>
+                <textarea maxlength="255" name="message" id="message"><?php echo $reminder['subject']; ?></textarea><br>
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <input type="submit" name="action" value="Edit Reminder" class="btn">
+                <input type="submit" name="action" value="Edit Reminder">
             </fieldset>
         </form>
+        <br>
     </div>
 </div>
 <?php require_once 'app/views/templates/footer.php'?>
