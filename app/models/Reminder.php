@@ -19,7 +19,7 @@ class Reminder {
       $query = 'UPDATE reminders SET subject= :subject WHERE id = :id';
       $statement = $db->prepare($query);
       $statement->bindValue(':subject', $subject);
-      $statement->bindValue(':id', id);
+      $statement->bindValue(':id', $id);
       $statement->execute();
       $statement->closeCursor();  
     }
@@ -28,7 +28,7 @@ class Reminder {
     $db = db_connect();
     $query = 'DELETE from reminders WHERE id= :id';
     $statement = $db->prepare($query);
-    $statement->bindValue(':id', id);
+    $statement->bindValue(':id', $id);
     $statement->execute();
     $statement->closeCursor();  
   }
