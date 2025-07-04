@@ -1,3 +1,4 @@
+
 <?php
 if (!isset($_SESSION['auth'])) {
     header('Location: /login');
@@ -25,15 +26,10 @@ if (!isset($_SESSION['auth'])) {
           <a class="nav-link" href="/about">About Me</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link dropdown-toggle" href="#">Dropdown</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+          <a class="nav-link" href="/reminders">Reminders</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <a class="nav-link" href="/reminders/create">Create Reminder</a>
         </li>
       </ul>
     </div>
