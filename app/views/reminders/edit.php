@@ -4,20 +4,20 @@
         <div class="row">
             <div class="col-lg-12">
                 <!-- Display error if there is one -->
-                <?php echo $error; ?>
+                <?php if ($error): ?>
+                    <div class="alert alert-danger"><?php echo $error; ?></div>
+                <?php endif; ?>
                 <h1>Edit Your Reminder</h1>
                 <form action="/reminders/edit_reminder" method="post">
                     <fieldset>
                         <legend>Enter Your Reminder</legend>
-                    <textarea maxlength="255" name="message" id="message">
-                    </textarea><br>
-
-                    <input type="submit" name = "action" value="Edit Reminder">
+                        <textarea maxlength="255" name="message" id="message"><?php echo $reminder['subject']; ?></textarea><br>
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                        <input type="submit" name="action" value="Edit Reminder">
                     </fieldset>
                 </form>
-            <br>
+                <br>
             </div>
         </div>
     </div>
-
 <?php require_once 'app/views/templates/footer.php'?>
