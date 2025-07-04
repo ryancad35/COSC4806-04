@@ -21,7 +21,7 @@ class Reminder {
       return $rows;
     }
 
-    public function update_reminder($subject, $id) {
+    public function edit_reminder($subject, $id) {
       $db = db_connect();
       $query = 'UPDATE reminders SET subject= :subject WHERE id = :id';
       $statement = $db->prepare($query);

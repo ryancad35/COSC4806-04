@@ -17,13 +17,13 @@ class Reminders extends Controller {
         $this->view('reminders/index', ['reminders' => $list_of_reminders, 'remindersList' => $remindersList]);
     }
 
-    // Redirect to page to create a new reminder
+    // Redirect to page to create a new reminder when user clicks on the link
     public function create() {
         $reminder = $this->model('Reminder');
         $this->view('reminders/create');
     }
 
-    // Capture when user submits a new reminder
+    // Capture when user submits a new reminder by clicking on the submit button
     public function create_reminder() {
         $action = filter_input(INPUT_POST, 'action');
 
@@ -41,6 +41,11 @@ class Reminders extends Controller {
                 return $error;
             }
         }
+    }
+
+    public function edit($id) {
+        $reminder = $this->model('Reminder');
+        $this->view('reminders/edit', ['id' => $id]);
     }
 
     // Delete a reminder
