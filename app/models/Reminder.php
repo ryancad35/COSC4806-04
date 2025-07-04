@@ -6,7 +6,7 @@ class Reminder {
 
     }
 
-    public function get_all_reminders () {
+    public function get_all_reminders() {
       $db = db_connect();
       $statement = $db->prepare("select * from reminders;");
       $statement->execute();
@@ -14,9 +14,31 @@ class Reminder {
       return $rows;
     }
 
-    public function update_reminder ($reminder_id) {
+    public function update_reminder($subject, $id) {
       $db = db_connect();
-      // do update statement 
+      $query = 'UPDATE reminders SET subject= :subject WHERE id = :id';
+      $statement = $db->prepare($query);
+      $statement->bindValue(':subject', $subject);
+      $statement->bindValue(':id', id);
+      $statement->execute();
     }
 
+    function create_reminders_list($reminders)
+    {
+      $remindersList = "";
+  
+      foreach ($reminders as $row) {
+        $subject = htmlspecialchars($row['subject']);
+        $created_at = htmlspecialchars($row['created_at']);
+        $id = $row['id'];
+  
+        $remindersList .= "<p><strong>Reminder:</strong> $subject</p>";
+        $remindersList .= "<p><b>Created on:</b> $created_at</p>";
+        $remindersList .= "<p>
+          <a href='reminders/edit/$id'>Edit</a> | 
+          <a href='reminders/delete/$id'>Delete</a>
+        </p><hr>";
+      }
+      return $remindersList;
+    }
 }

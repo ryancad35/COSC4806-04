@@ -11,9 +11,9 @@
     </div>
 
     <table>
-        <!-- <?php
-        print_r($data['reminders']);
-        ?> -->
+        <?php
+        echo $remindersList;
+        ?>
     </table>
 
 <?php require_once 'app/views/templates/footer.php' ?>
