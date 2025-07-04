@@ -24,7 +24,7 @@ class Reminders extends Controller {
     }
 
     // Capture when user submits a new reminder
-    public function create_reminder($message) {
+    public function create_reminder() {
         $action = filter_input(INPUT_POST, 'action');
 
         if ($action === 'Submit Reminder') {
